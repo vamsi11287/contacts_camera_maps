@@ -1,11 +1,12 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
+import Camera from './Camera';
 import ContactsPage from './Contacts';
 import Maps from './Maps';
 const Stack = createNativeStackNavigator();
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({navigation}: any) => {
   return (
     <View>
       <TouchableOpacity
@@ -33,6 +34,20 @@ const HomeScreen = ({navigation}) => {
         }}>
         <Text style={{color: 'white'}}>Open Maps</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Camera')}
+        style={{
+          width: '100%',
+          backgroundColor: 'orange',
+          height: 40,
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: 15,
+        }}>
+        <Text style={{color: 'white'}}>Open Camera</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -57,6 +72,11 @@ export const HomeRoutes = () => {
         name="Maps"
         options={{headerShown: false}}
         component={Maps}
+      />
+      <Stack.Screen
+        name="Camera"
+        options={{headerShown: false}}
+        component={Camera}
       />
     </Stack.Navigator>
   );
